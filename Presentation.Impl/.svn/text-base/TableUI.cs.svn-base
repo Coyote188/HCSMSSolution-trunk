@@ -1,0 +1,254 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using HCSMS.Model;
+using HCSMS.Model.Application;
+using System.ServiceModel;
+
+namespace HCSMS.Presentation.Impl
+{
+    public class TableUI:UserInterface,ITableUI
+    {
+       
+        public Table Table { get; set; }
+
+        public TableUI(Session session)
+            : base(session)
+        {
+        }
+        public TableUI(string tableNumber, Session session)
+            : base(session)
+        {            
+            this.Table.Number = tableNumber;
+        }
+        public TableUI(Table aTable)
+            : base()
+        {           
+            this.Table = aTable;
+        }  
+
+        #region ITableUI 成员
+        public void ChangeItem(Dictionary<Item, Item> anItemPair)
+        {
+
+            using (DinningService.DinningServiceClient proxy = new DinningService.DinningServiceClient())
+            {
+                try
+                {
+                    proxy.Open();
+
+                    proxy.ChangeItem(Table.Number, anItemPair);
+                }
+                catch (FaultException<HCSMSException> ex)
+                {
+                    raiseError(ex);
+                }
+                catch (Exception ex)
+                {
+                    raiseError(ex);
+                }
+                finally
+                {
+                    proxy.Close();
+                }
+            }
+        }
+
+        public void ChangeTableTo(Table aNewTable)
+        {
+            using (DinningService.DinningServiceClient proxy = new DinningService.DinningServiceClient())
+            {
+                try
+                {
+                   
+                    proxy.Open();
+                   
+                    proxy.ChangeTable(Table.Number, aNewTable.Number);
+                 }            
+                catch (FaultException<HCSMSException> ex)
+                {
+                    raiseError(ex);
+                }
+                catch (Exception ex)
+                {
+                    raiseError(ex);
+                }
+                finally
+                {
+                    proxy.Close();
+                }
+            }
+        }
+
+        public void MergeTableTo(Table aNewTable)
+        {
+            using (DinningService.DinningServiceClient proxy = new DinningService.DinningServiceClient())
+            {
+                try
+                {
+
+                    proxy.Open();
+
+                    proxy.ChangeTable(Table.Number, aNewTable.Number);
+                }
+                catch (FaultException<HCSMSException> ex)
+                {
+                    raiseError(ex);
+                }
+                catch (Exception ex)
+                {
+                    raiseError(ex);
+                }
+                finally
+                {
+                    proxy.Close();
+                }
+            }
+        }
+
+        public void DeorderItem(List<Item> itemList)
+        {
+            using (DinningService.DinningServiceClient proxy = new DinningService.DinningServiceClient())
+            {
+                try
+                {
+                    proxy.Open();
+
+                    proxy.DeorderItem(Table.Number, itemList);
+                }
+                catch (FaultException<HCSMSException> ex)
+                {
+                    raiseError(ex);
+                }
+                catch (Exception ex)
+                {
+                    raiseError(ex);
+                }
+                finally
+                {
+                    proxy.Close();
+                }
+            }
+        }
+
+        public List<Table> GetAvailableTable()
+        {
+            using (DinningService.DinningServiceClient proxy = new DinningService.DinningServiceClient())
+            {
+                try
+                {
+                    proxy.Open();
+
+                    return proxy.QueryAvailableTable();
+
+                }
+                catch (FaultException<HCSMSException> ex)
+                {
+                    raiseError(ex);
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    raiseError(ex);
+                    return null;
+                }
+                finally
+                {
+                    proxy.Close();
+                }
+            }
+        }
+
+        public List<RequestHandleInfo> GetHandleRequest()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Item> GetOrderedItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Table GetTable()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void HandleRequest(RequestHandleInfo aRequest)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OrderItem(List<Item> itemList)
+        {
+            using (DinningService.DinningServiceClient proxy = new DinningService.DinningServiceClient())
+            {
+                try
+                {
+                    proxy.Open();
+
+                    proxy.OrderItem(Table.Number, itemList);
+                }
+                catch (FaultException<HCSMSException> ex)
+                {
+                    raiseError(ex);
+                }
+                catch (Exception ex)
+                {
+                    raiseError(ex);
+                }
+                finally
+                {
+                    proxy.Close();
+                }
+            }
+        }
+
+        public void ProritizeItem(Dictionary<Item,PriorityLevel> anItemPair)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ServeItem(List<Item> anItem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetCriteria(QueryCriteria aCriteria)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UserTable(Dictionary<Table,DinningTable> aTable)
+        {
+            using (DinningService.DinningServiceClient proxy = new DinningService.DinningServiceClient())
+            {
+                try
+                {
+                    proxy.Open();
+
+                    proxy.UseTable(aTable);
+
+                }
+                catch (FaultException<HCSMSException> ex)
+                {
+                    raiseError(ex);
+                   
+                }
+                catch (Exception ex)
+                {
+                    raiseError(ex);
+                    
+                }
+                finally
+                {
+                    proxy.Close();
+                }
+            }
+        }
+
+        #endregion       
+    }
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/Service/DinningService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HCSMS.Model" />
+  <xs:complexType name="ArrayOfKeyValueOfItemItemL_PA6bpKj">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfItemItemL_PA6bpKj">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HCSMS.Model" name="Key" nillable="true" type="q1:Item" />
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HCSMS.Model" name="Value" nillable="true" type="q2:Item" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfItemItemL_PA6bpKj" nillable="true" type="tns:ArrayOfKeyValueOfItemItemL_PA6bpKj" />
+  <xs:complexType name="ArrayOfKeyValueOfTableDinningTableL_PA6bpKj">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfTableDinningTableL_PA6bpKj">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HCSMS.Model" name="Key" nillable="true" type="q3:Table" />
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HCSMS.Model" name="Value" nillable="true" type="q4:DinningTable" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfTableDinningTableL_PA6bpKj" nillable="true" type="tns:ArrayOfKeyValueOfTableDinningTableL_PA6bpKj" />
+</xs:schema>

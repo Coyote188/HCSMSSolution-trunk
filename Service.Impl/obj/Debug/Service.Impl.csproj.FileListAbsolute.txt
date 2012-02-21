@@ -1,0 +1,13 @@
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.Impl\bin\HCSMS.Service.Impl.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.Impl\bin\HCSMS.Service.Impl.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.Impl\bin\HCSMS.DataAccess.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.Impl\bin\HCSMS.Model.Application.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.Impl\bin\HCSMS.Model.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.Impl\bin\HCSMS.Service.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.Impl\bin\HCSMS.Model.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.Impl\bin\HCSMS.Model.Application.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.Impl\bin\HCSMS.DataAccess.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.Impl\bin\HCSMS.Service.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.Impl\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.Impl\obj\Debug\HCSMS.Service.Impl.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.Impl\obj\Debug\HCSMS.Service.Impl.pdb

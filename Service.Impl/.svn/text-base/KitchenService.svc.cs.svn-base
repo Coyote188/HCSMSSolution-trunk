@@ -1,0 +1,218 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+using HCSMS.Model;
+using HCSMS.DataAccess;
+using HCSMS.Model.Application;
+using HCSMS.Service;
+
+
+namespace HCSMS.Service.Impl
+{
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]   
+    public class KitchenService : ServiceImplementation, IKitchenService
+    {
+        private static IKitchenCallBack callback;
+        private static List<IKitchenCallBack> clentList = new List<IKitchenCallBack>();
+
+        public static event HandleEvent StopSupplyItemEvent;
+        public static event HandleEvent RunOutOfItemEvent;
+        public static event HandleEvent RequestAdmit;
+        public static event HandleEvent RequestDeny;
+
+        public KitchenService():base()
+        {
+            DinningService.ChangeItemEvent += OnChangeItem;
+            DinningService.ChangeTableEvent += OnChangeTable;
+            DinningService.DeorderItemEvent += OnDeorderItem;
+            DinningService.OrderItemEvent += OnOrderItem;
+            
+        }
+
+        void OnChangeItem(object sender, HandleEventArgs args)
+        {            
+            List<RequestHandleInfo > responseAdmit = new List<RequestHandleInfo>();
+            List<RequestHandleInfo > responseDeny = new List<RequestHandleInfo>();
+            foreach(RequestHandleInfo info in args.RequestInfo)
+            {
+                if(info.RequestType==RequestType.ChangeItem)
+                {
+                    foreach (IKitchenCallBack callback in clentList)
+                    {
+                        // go and get response from cook
+                        string reply = null;
+                        reply = callback.ChangeItem(info.SourceId, info.TargetId);
+                        if (reply == null)
+                        {
+                            info.IsHandled = true;
+                            responseAdmit.Add(info);
+                        }
+                        else
+                        {
+                            info.IsHandled = false;
+                            info.Description = reply;
+                            responseDeny.Add(info);
+                        }
+                    }
+                }
+            }
+            // notify for item that cook admit
+            HandleEventArgs admitArgs = new HandleEventArgs("Request Admit", responseAdmit);
+            HandleEventHandler(RequestAdmit, admitArgs);
+            // notify for item that cook deny
+            HandleEventArgs denyArgs = new HandleEventArgs("Request Admit", responseDeny);
+            HandleEventHandler(RequestDeny, denyArgs);
+        }
+        void OnChangeTable(object sender, HandleEventArgs args)
+        {
+            callback = OperationContext.Current.GetCallbackChannel<IKitchenCallBack>();
+            List<RequestHandleInfo> responseAdmit = new List<RequestHandleInfo>();
+            List<RequestHandleInfo> responseDeny = new List<RequestHandleInfo>();
+            foreach (RequestHandleInfo info in args.RequestInfo)
+            {
+                if (info.RequestType == RequestType.ChangeTable)
+                {
+                    // go and get response from cook
+                    string reply = null;
+                    reply = callback.ChangeTable(info.SourceId, info.TargetId);
+                    if (reply == null)
+                    {
+                        info.IsHandled = true;
+                        responseAdmit.Add(info);
+                    }
+                    else
+                    {
+                        info.IsHandled = false;
+                        info.Description = reply;
+                        responseDeny.Add(info);
+                    }
+                }
+            }
+            // notify for item that cook admit
+            HandleEventArgs admitArgs = new HandleEventArgs("Request Admit", responseAdmit);
+            HandleEventHandler(RequestAdmit, admitArgs);
+            // notify for item that cook deny
+            HandleEventArgs denyArgs = new HandleEventArgs("Request Admit", responseDeny);
+            HandleEventHandler(RequestDeny, denyArgs);
+        }
+        void OnDeorderItem(object sender, HandleEventArgs args)
+        {
+            callback = OperationContext.Current.GetCallbackChannel<IKitchenCallBack>();
+
+            List<RequestHandleInfo> responseAdmit = new List<RequestHandleInfo>();
+            List<RequestHandleInfo> responseDeny = new List<RequestHandleInfo>();          
+            foreach (RequestHandleInfo info in args.RequestInfo)
+            {
+                if (info.RequestType == RequestType.DeorderItem)
+                {                
+                    string reply = null;
+                    // go and get response from cook
+                    reply = callback.DeorderItem(info.SourceId);
+                    if (reply == null)
+                    {
+                        info.IsHandled = true;
+                        responseAdmit.Add(info);
+                    }
+                    else
+                    {
+                        info.IsHandled = false;
+                        info.Description = reply;
+                        responseDeny.Add(info);
+                    }
+                }
+            }   
+            // notify for item that cook admit
+            HandleEventArgs admitArgs = new HandleEventArgs("Request Admit", responseAdmit);
+            HandleEventHandler(RequestAdmit, admitArgs);
+            // notify for item that cook deny
+            HandleEventArgs denyArgs = new HandleEventArgs("Request Admit", responseDeny);
+            HandleEventHandler(RequestDeny, denyArgs);
+        }
+        void OnOrderItem(object sender, HandleEventArgs args)
+        {
+            callback = OperationContext.Current.GetCallbackChannel<IKitchenCallBack>();
+
+            List<RequestHandleInfo> responseAdmit = new List<RequestHandleInfo>();
+            List<RequestHandleInfo> responseDeny = new List<RequestHandleInfo>();
+            foreach (RequestHandleInfo info in args.RequestInfo)
+            {
+                if (info.RequestType == RequestType.DeorderItem)
+                {
+                    string reply = null;
+                    // go and get response from cook
+                    reply = callback.OrderItem(info.SourceId);
+                    if (reply == null)
+                    {
+                        info.IsHandled = true;
+                        responseAdmit.Add(info);
+                    }
+                    else
+                    {
+                        info.IsHandled = false;
+                        info.Description = reply;
+                        responseDeny.Add(info);
+                    }
+                }
+            }
+            // notify for item that cook admit
+            HandleEventArgs admitArgs = new HandleEventArgs("Request Admit", responseAdmit);
+            HandleEventHandler(RequestAdmit, admitArgs);
+            // notify for item that cook deny
+            HandleEventArgs denyArgs = new HandleEventArgs("Request Admit", responseDeny);
+            HandleEventHandler(RequestDeny, denyArgs);
+        }
+
+        #region IKitchenService 成员
+
+        public void StopSupplyItem(List<Item> itemList)
+        {
+            try
+            {
+                //save record to database
+
+                ItemDao.StopSupplyItem(itemList);
+                List<RequestHandleInfo> requestList = new List<RequestHandleInfo>();
+                foreach (Item item in itemList)
+                {
+                    RequestHandleInfo info = new RequestHandleInfo();
+                    info.RequestType = RequestType.DeorderItem;
+                    info.SourceId = item.Id;
+                    requestList.Add(info);
+                }
+                HandleEventHandler(StopSupplyItemEvent, new HandleEventArgs("stop supply item", requestList));
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+                throw new FaultException<HCSMSException>(ex);
+            }
+            catch (Exception ex)
+            {
+                raiseError(ex);
+            }
+        }
+
+        #endregion
+
+        public void Subscribe()
+        {
+            IKitchenCallBack callback = OperationContext.Current.GetCallbackChannel<IKitchenCallBack>();
+            if (!clentList.Contains(callback))
+            {
+                clentList.Add(callback);
+            }
+        }
+        public void Unsubscribe()
+        {
+            IKitchenCallBack callback = OperationContext.Current.GetCallbackChannel<IKitchenCallBack>();
+            if (clentList.Contains(callback))
+            {
+                clentList.Remove(callback);
+            }
+        }
+    }
+}

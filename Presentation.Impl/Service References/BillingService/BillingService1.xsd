@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HCSMS.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HCSMS.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Bill">
+    <xs:sequence>
+      <xs:element name="_x003C_BillTime_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_BillingInfo_x003E_k__BackingField" nillable="true" type="tns:ArrayOfBillingInfo" />
+      <xs:element name="_x003C_BillingTable_x003E_k__BackingField" nillable="true" type="tns:DinningTable" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Note_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_TotalMoney_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_Type_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Bill" nillable="true" type="tns:Bill" />
+  <xs:complexType name="ArrayOfBillingInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BillingInfo" nillable="true" type="tns:BillingInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBillingInfo" nillable="true" type="tns:ArrayOfBillingInfo" />
+  <xs:complexType name="BillingInfo">
+    <xs:sequence>
+      <xs:element name="_x003C_Card_x003E_k__BackingField" nillable="true" type="tns:MemberCard" />
+      <xs:element name="_x003C_Money_x003E_k__BackingField" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BillingInfo" nillable="true" type="tns:BillingInfo" />
+  <xs:complexType name="MemberCard">
+    <xs:sequence>
+      <xs:element name="_x003C_CreateDate_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_CurrentMoney_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_ExpiredDate_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_MoneyConsumed_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_Password_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Type_x003E_k__BackingField" nillable="true" type="tns:MemberCardType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberCard" nillable="true" type="tns:MemberCard" />
+  <xs:complexType name="MemberCardType">
+    <xs:sequence>
+      <xs:element name="_x003C_Description_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Discount_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_MaximumConsume_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_MinimumConsume_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_Name_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberCardType" nillable="true" type="tns:MemberCardType" />
+  <xs:complexType name="DinningTable">
+    <xs:sequence>
+      <xs:element name="_x003C_ArrivedTime_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_GuestAmount_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Note_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_OrderedItem_x003E_k__BackingField" nillable="true" type="tns:ArrayOfSaleItem" />
+      <xs:element name="_x003C_UsingTable_x003E_k__BackingField" nillable="true" type="tns:Table" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DinningTable" nillable="true" type="tns:DinningTable" />
+  <xs:complexType name="ArrayOfSaleItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SaleItem" nillable="true" type="tns:SaleItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSaleItem" nillable="true" type="tns:ArrayOfSaleItem" />
+  <xs:complexType name="SaleItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Item">
+        <xs:sequence>
+          <xs:element name="_x003C_IsRecommended_x003E_k__BackingField" type="xs:boolean" />
+          <xs:element name="_x003C_SalePricePerUnit_x003E_k__BackingField" type="xs:decimal" />
+          <xs:element name="_x003C_SpecialOffer_x003E_k__BackingField" nillable="true" type="tns:ArrayOfSpecialOffer" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SaleItem" nillable="true" type="tns:SaleItem" />
+  <xs:complexType name="Item">
+    <xs:sequence>
+      <xs:element name="_x003C_Amount_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_Description_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Measurement_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Name_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_PricePerUnit_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_Status_x003E_k__BackingField" type="tns:ItemStatus" />
+      <xs:element name="_x003C_Type_x003E_k__BackingField" type="tns:ItemType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Item" nillable="true" type="tns:Item" />
+  <xs:simpleType name="ItemStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Available" />
+      <xs:enumeration value="Deleted" />
+      <xs:enumeration value="Exhaust" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ItemStatus" nillable="true" type="tns:ItemStatus" />
+  <xs:simpleType name="ItemType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Food" />
+      <xs:enumeration value="Drink" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ItemType" nillable="true" type="tns:ItemType" />
+  <xs:complexType name="ArrayOfSpecialOffer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SpecialOffer" nillable="true" type="tns:SpecialOffer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSpecialOffer" nillable="true" type="tns:ArrayOfSpecialOffer" />
+  <xs:complexType name="SpecialOffer">
+    <xs:sequence>
+      <xs:element name="_x003C_CreateDate_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_Description_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_FinishDate_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Name_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Rule_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_StartDate_x003E_k__BackingField" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SpecialOffer" nillable="true" type="tns:SpecialOffer" />
+  <xs:complexType name="Table">
+    <xs:sequence>
+      <xs:element name="_x003C_Location_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Name_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Number_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SeatAmount_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_Status_x003E_k__BackingField" type="tns:TableStatus" />
+      <xs:element name="_x003C_Type_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Table" nillable="true" type="tns:Table" />
+  <xs:simpleType name="TableStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Empty" />
+      <xs:enumeration value="Used" />
+      <xs:enumeration value="Booked" />
+      <xs:enumeration value="Unavailable" />
+      <xs:enumeration value="Billing" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TableStatus" nillable="true" type="tns:TableStatus" />
+</xs:schema>

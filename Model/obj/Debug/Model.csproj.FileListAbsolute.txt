@@ -1,0 +1,5 @@
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Model\bin\Debug\HCSMS.Model.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Model\bin\Debug\HCSMS.Model.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Model\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Model\obj\Debug\HCSMS.Model.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Model\obj\Debug\HCSMS.Model.pdb

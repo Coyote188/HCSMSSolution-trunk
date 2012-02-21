@@ -1,0 +1,440 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+using HCSMS.Model;
+using HCSMS.DataAccess;
+using HCSMS.Model.Application;
+using HCSMS.Service;
+
+namespace HCSMS.Service.Impl
+{
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,ConcurrencyMode=ConcurrencyMode.Reentrant)]   
+    public class DinningService : ServiceImplementation, IDinningService
+    {
+        private static IFrontDeskCallBack callback;
+
+        public static event HandleEvent ChangeItemEvent;
+        public static event HandleEvent OrderItemEvent;
+        public static event HandleEvent DeorderItemEvent;
+        public static event HandleEvent ChangeTableEvent;
+
+        public DinningService()
+            : base()
+        {
+            KitchenService.StopSupplyItemEvent += OnStopSupplyItem;
+            KitchenService.RunOutOfItemEvent += OnRunOutOfItem;
+            KitchenService.RequestAdmit += OnRequestAdmit;
+            KitchenService.RequestDeny += OnRequestDeny;
+        }
+
+        private void OnStopSupplyItem(object sender, HandleEventArgs args)
+        {
+            //callback = OperationContext.Current.GetCallbackChannel<IFrontDeskCallBack>();
+            //foreach (RequestHandleInfo info in args.RequestInfo)
+            //{
+            //    //notify front desk about request success
+            //    callback.StopSupplyItem(info.SourceId);
+            //}
+        }
+        private void OnRunOutOfItem(object sender, HandleEventArgs args)
+        {
+            //callback = OperationContext.Current.GetCallbackChannel<IFrontDeskCallBack>();
+            //foreach (RequestHandleInfo info in args.RequestInfo)
+            //{
+            //    //notify front desk about request success
+            //    callback.RunOutOfItem(info.SourceId);
+            //}
+        }
+        private void OnRequestAdmit(object sender, HandleEventArgs args)
+        {
+            //callback = OperationContext.Current.GetCallbackChannel<IFrontDeskCallBack>();
+            //foreach (RequestHandleInfo info in args.RequestInfo)
+            //{
+            //    //notify front desk about request success
+            //    callback.RequestAdmit(info.RequestType, info.SourceId, info.Description);   
+            //}
+        }
+        private void OnRequestDeny(object sender, HandleEventArgs args)
+        {
+            //callback = OperationContext.Current.GetCallbackChannel<IFrontDeskCallBack>();
+            //foreach (RequestHandleInfo info in args.RequestInfo)
+            //{
+            //    //notify front desk about request deny
+            //    callback.RequestDeny(info.RequestType, info.SourceId, info.Description);
+            //}
+        }
+        
+        #region IDinningItemService 成员
+
+        public List<SaleItem> QueryItemList(QueryCriteria queryConditon)
+        {
+            try
+            {
+                return ItemDao.GetSaleItemByCondition(queryConditon);
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+                return null;
+            }
+        }
+
+        public Item QueryItem(string itemId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<SpecialOffer> GetSpecialOfferForItem(Item anItem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OrderItem(string tableNumber, List<Item> itemList)
+        {
+            try
+            {
+               
+                List<RequestHandleInfo> requestList = new List<RequestHandleInfo>();
+                foreach(Item item in itemList)
+                {
+                    RequestHandleInfo handleInfo = new RequestHandleInfo();
+                    handleInfo.RequestType = RequestType.OrderItem;
+                    handleInfo.SourceId =  item.Id;
+
+                    requestList.Add(handleInfo);
+                }
+                HandleEventArgs orderEvent = new HandleEventArgs("order item", requestList);                          
+                bool isAdmit=true;
+                // notify order item event
+                HandleEventHandler(OrderItemEvent, orderEvent);
+                
+                foreach(RequestHandleInfo info in orderEvent.RequestInfo)
+                {
+                    isAdmit=isAdmit && info.IsHandled;
+                }
+                //save record to database
+                if (isAdmit)
+                {
+                    ItemDao.InsertItemOrder(TableDao.GetDinningTable(tableNumber).Id, itemList);
+                }
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+                throw new FaultException<HCSMSException>(ex);
+            }
+            catch (Exception ex)
+            {
+                raiseError(ex);
+            }
+        }
+
+        public void DeorderItem(string tableNumber, List<Item> itemList)
+        {
+            DinningTable table = TableDao.GetDinningTable(tableNumber);
+            if (table == null)
+            {
+                raiseError(new HCSMSException("Table is not in use !"));
+            }
+            List<string> itemIdList = new List<string>();
+            List<RequestHandleInfo> requestList = new List<RequestHandleInfo>();
+
+            foreach (Item item in itemList)
+            {
+                itemIdList.Add(item.Id);
+
+                RequestHandleInfo handleInfo = new RequestHandleInfo();
+                handleInfo.RequestType = RequestType.DeorderItem;
+                handleInfo.SourceId = item.Id;
+
+                requestList.Add(handleInfo);
+            }
+            HandleEventArgs orderEvent = new HandleEventArgs("deorder item", requestList);
+            bool isAdmit = true;
+            // notify deorder item event
+            HandleEventHandler(DeorderItemEvent, orderEvent);
+
+            foreach (RequestHandleInfo info in orderEvent.RequestInfo)
+            {
+                isAdmit = isAdmit && info.IsHandled;
+            }
+            
+            try
+            {
+                if (isAdmit)
+                {
+                    //save record to database             
+                    ItemDao.DeorderItem(table.Id, itemIdList);
+                }
+                 
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+                throw new FaultException<HCSMSException>(ex);
+            }
+            catch (Exception ex)
+            {
+                raiseError(ex);
+            }
+        }
+
+        public void ChangeItem(string tableNumber, Dictionary<Item, Item> itemPair)
+        {
+            DinningTable table = TableDao.GetDinningTable(tableNumber);
+            if (table == null)
+            {
+                raiseError(new HCSMSException("Table is not in use !"));
+            }
+            Dictionary<string, string> itemIdList = new Dictionary<string, string>();
+            List<RequestHandleInfo> requestList = new List<RequestHandleInfo>();
+
+            foreach (KeyValuePair<Item, Item> pair in itemPair)
+            {
+                itemIdList.Add(((Item)pair.Key).Id, ((Item)pair.Value).Id);
+                RequestHandleInfo handleInfo = new RequestHandleInfo();
+                handleInfo.RequestType = RequestType.ChangeItem;
+                handleInfo.SourceId = ((Item)pair.Key).Id;
+                handleInfo.TargetId = ((Item)pair.Value).Id;
+                requestList.Add(handleInfo);
+            }
+            HandleEventArgs orderEvent = new HandleEventArgs("change item", requestList);
+            bool isAdmit = true;
+            //notify change item event
+            HandleEventHandler(ChangeItemEvent, orderEvent);
+
+            foreach (RequestHandleInfo info in orderEvent.RequestInfo)
+            {
+                isAdmit = isAdmit && info.IsHandled;
+            }
+            try
+            {
+                  if (isAdmit)
+                {
+                 
+                //save record to database
+                ItemDao.ChangeItem(table.Id, itemIdList);
+                }              
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+                throw new FaultException<HCSMSException>(ex);
+            }
+            catch (Exception ex)
+            {
+                raiseError(ex);
+            }
+        }
+
+        public void ServeItem(string tableNumber, List<Item> itemList)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetSpecialOfferForItem(Item anItem, List<SpecialOffer> offerList)
+        {
+            try
+            {
+                //save record to database
+                SpecialOfferDao.InsertSpecialSale(anItem.Id, offerList);
+
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+                throw new FaultException<HCSMSException>(ex);
+            }
+            catch (Exception ex)
+            {
+                raiseError(ex);
+            }
+        }
+
+        public void SetItem(List<SaleItem> itemList)
+        {
+            
+            try
+            {
+                //save record to database
+                ItemDao.InsertSaleItem(itemList);           
+              
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+                throw new FaultException<HCSMSException>(ex);
+            }
+            catch (Exception ex)
+            {
+                raiseError(ex);
+            }
+        }
+
+        public void UpdateItem(List<Item> itemList)
+        {
+            try
+            {
+                //save record to database
+                ItemDao.UpdateItem(itemList);
+
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+                throw new FaultException<HCSMSException>(ex);
+            }
+            catch (Exception ex)
+            {
+                raiseError(ex);
+            }
+        }
+        public List<SaleItem> GetRecommendItem()
+        {
+            try
+            {
+                
+                return ItemDao.GetRecommendSaleItem();
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+                return null;
+            }
+        }
+
+        #endregion
+
+        #region IDinningTableService
+
+        public Table QueryTable(string tableNumber) 
+        {
+            Table aTable = null;
+            try
+            {
+                aTable= TableDao.GetTable(tableNumber);
+                return aTable;
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+                return null;
+            }
+        }
+
+        public List<Table> QueryTableList(QueryCriteria condition)
+        {
+            try
+            {
+                return TableDao.GetTable(condition);
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+                return null;
+            }
+        }
+
+        public List<Table> QueryAvailableTable() 
+        {
+            try
+            {
+                return TableDao.GetAvailableTable();
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+                return null;
+            }
+        }
+
+        public List<Table> GetTable(DateTime date)
+        {
+            try
+            {
+                return TableDao.GetAvailablePreorderTable(date);
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+                return null;
+            }
+        }
+
+
+        public void UseTable(Dictionary<Table, DinningTable> tables)
+        {
+            try
+            {
+                foreach (KeyValuePair<Table, DinningTable> pair in tables)
+                {
+                    TableDao.InsertDinningTable(pair.Key.Number, pair.Value);
+                }
+               
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+            }
+        }
+
+        public void ChangeTable(string oldTableNumber, string newTableNumber) 
+        {
+            try
+            {
+                List<Table> tableList =TableDao.GetAvailableTable();
+                bool tableExist = false;
+                foreach (Table table in tableList)
+                {
+                    if (table.Number == oldTableNumber)
+                    {
+                        tableExist = true;
+                        break;
+                    }
+                }
+                RequestHandleInfo handleInfo = new RequestHandleInfo();
+                List<RequestHandleInfo> requestList = new List<RequestHandleInfo>();
+                handleInfo.RequestType = RequestType.ChangeTable;
+                handleInfo.SourceId = oldTableNumber;
+                handleInfo.TargetId = newTableNumber;
+                requestList.Add(handleInfo);
+                HandleEventArgs orderEvent = new HandleEventArgs("Change or merge table!", requestList);
+                bool isAdmit = true;
+                // notify change table event
+                HandleEventHandler(ChangeTableEvent, orderEvent);
+
+                foreach (RequestHandleInfo info in orderEvent.RequestInfo)
+                {
+                    isAdmit = isAdmit && info.IsHandled;
+                }
+                  if (isAdmit)
+                {
+                 
+                if (tableExist)
+                {
+                    TableDao.ChangeTable(((DinningTable)TableDao.GetDinningTable(oldTableNumber)).Id, oldTableNumber, newTableNumber);
+                }
+                else
+                {
+                    TableDao.MergeTable(((DinningTable)TableDao.GetDinningTable(oldTableNumber)).Id, ((DinningTable)TableDao.GetDinningTable(newTableNumber)).Id);
+                }
+                }               
+               
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+            }
+        }
+
+        public void ReserveTable(string tableNumber)
+        {
+            // to do 
+        }
+        #endregion
+    }
+}

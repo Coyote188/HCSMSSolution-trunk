@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HCSMS.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HCSMS.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="PreorderTable">
+    <xs:sequence>
+      <xs:element name="_x003C_ArrivedTime_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_CustomerName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_MemberInfo_x003E_k__BackingField" nillable="true" type="tns:Member" />
+      <xs:element name="_x003C_PeopleAmount_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_PerpaidMoney_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_Phone_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ReserveTables_x003E_k__BackingField" nillable="true" type="tns:ArrayOfTable" />
+      <xs:element name="_x003C_TableAmount_x003E_k__BackingField" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PreorderTable" nillable="true" type="tns:PreorderTable" />
+  <xs:complexType name="Member">
+    <xs:sequence>
+      <xs:element name="_x003C_Card_x003E_k__BackingField" nillable="true" type="tns:ArrayOfMemberCard" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Name_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Note_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_OrganizationLocation_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_OrganizationName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Phone_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Status_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Member" nillable="true" type="tns:Member" />
+  <xs:complexType name="ArrayOfMemberCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MemberCard" nillable="true" type="tns:MemberCard" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMemberCard" nillable="true" type="tns:ArrayOfMemberCard" />
+  <xs:complexType name="MemberCard">
+    <xs:sequence>
+      <xs:element name="_x003C_CreateDate_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_CurrentMoney_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_ExpiredDate_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_MoneyConsumed_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_Password_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Type_x003E_k__BackingField" nillable="true" type="tns:MemberCardType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberCard" nillable="true" type="tns:MemberCard" />
+  <xs:complexType name="MemberCardType">
+    <xs:sequence>
+      <xs:element name="_x003C_Description_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Discount_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_MaximumConsume_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_MinimumConsume_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_Name_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberCardType" nillable="true" type="tns:MemberCardType" />
+  <xs:complexType name="ArrayOfTable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Table" nillable="true" type="tns:Table" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTable" nillable="true" type="tns:ArrayOfTable" />
+  <xs:complexType name="Table">
+    <xs:sequence>
+      <xs:element name="_x003C_Location_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Name_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Number_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SeatAmount_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_Status_x003E_k__BackingField" type="tns:TableStatus" />
+      <xs:element name="_x003C_Type_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Table" nillable="true" type="tns:Table" />
+  <xs:simpleType name="TableStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Empty" />
+      <xs:enumeration value="Used" />
+      <xs:enumeration value="Booked" />
+      <xs:enumeration value="Unavailable" />
+      <xs:enumeration value="Billing" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TableStatus" nillable="true" type="tns:TableStatus" />
+  <xs:complexType name="ArrayOfPreorderTable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PreorderTable" nillable="true" type="tns:PreorderTable" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPreorderTable" nillable="true" type="tns:ArrayOfPreorderTable" />
+</xs:schema>

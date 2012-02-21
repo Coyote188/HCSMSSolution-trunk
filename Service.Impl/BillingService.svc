@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="HCSMS.Service.Impl.BillingService" CodeBehind="BillingService.svc.cs" %>

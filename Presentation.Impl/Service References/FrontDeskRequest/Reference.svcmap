@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e52c9fe2-09b9-4878-83f2-ed32afe2ecdc" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:80/Service/FrontDeskRequest.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FrontDeskRequest3.xsd" MetadataType="Schema" ID="c8235630-7572-4ee8-bb6d-98523812924c" SourceId="1" SourceUrl="http://localhost/Service/FrontDeskRequest.svc?xsd=xsd3" />
+    <MetadataFile FileName="FrontDeskRequest.xsd" MetadataType="Schema" ID="a85cda7d-e1dc-475a-9314-433bb6859ffd" SourceId="1" SourceUrl="http://localhost/Service/FrontDeskRequest.svc?xsd=xsd2" />
+    <MetadataFile FileName="FrontDeskRequest1.xsd" MetadataType="Schema" ID="aa3bb553-2e41-47b3-9447-9bd8e6565da8" SourceId="1" SourceUrl="http://localhost/Service/FrontDeskRequest.svc?xsd=xsd1" />
+    <MetadataFile FileName="FrontDeskRequest.wsdl" MetadataType="Wsdl" ID="3ba3c835-e597-452c-9dd0-d2cebb445482" SourceId="1" SourceUrl="http://localhost/Service/FrontDeskRequest.svc?wsdl" />
+    <MetadataFile FileName="FrontDeskRequest2.xsd" MetadataType="Schema" ID="fefe831c-e3ff-4ded-92b3-5bd677a75dd0" SourceId="1" SourceUrl="http://localhost/Service/FrontDeskRequest.svc?xsd=xsd0" />
+    <MetadataFile FileName="FrontDeskRequest.disco" MetadataType="Disco" ID="1ac960d6-99ec-409f-9581-6af854476930" SourceId="1" SourceUrl="http://localhost/Service/FrontDeskRequest.svc?disco" />
+    <MetadataFile FileName="FrontDeskRequest31.xsd" MetadataType="Schema" ID="f0c64528-965b-4953-bce6-17ac57f3baf3" SourceId="1" SourceUrl="http://localhost/Service/FrontDeskRequest.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

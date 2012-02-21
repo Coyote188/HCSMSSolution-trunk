@@ -1,0 +1,14 @@
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\bin\Debug\Presentation.ImplTestProject.dll.config
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\bin\Debug\Presentation.ImplTestProject.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\bin\Debug\Presentation.ImplTestProject.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\bin\Debug\HCSMS.Model.Application.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\bin\Debug\HCSMS.Model.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\bin\Debug\HCSMS.Presentation.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\bin\Debug\HCSMS.Presentation.Impl.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\bin\Debug\HCSMS.Presentation.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\bin\Debug\HCSMS.Model.Application.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\bin\Debug\HCSMS.Presentation.Impl.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\bin\Debug\HCSMS.Model.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\obj\Debug\Presentation.ImplTestProject.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\obj\Debug\Presentation.ImplTestProject.pdb

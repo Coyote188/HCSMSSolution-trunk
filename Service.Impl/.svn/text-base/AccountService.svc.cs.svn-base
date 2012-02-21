@@ -1,0 +1,93 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+using HCSMS.Model;
+using HCSMS.DataAccess;
+using HCSMS.Model.Application;
+using HCSMS.Service;
+using System.Security.Principal;
+using System.Security.Permissions;
+
+namespace HCSMS.Service.Impl
+{
+    // 注意: 如果更改此处的类名 "AccountService"，也必须更新 Web.config 中对 "AccountService" 的引用。
+    [ServiceBehavior(InstanceContextMode=InstanceContextMode.Single)]
+    public class AccountService : ServiceImplementation, IAccountService
+    {
+       
+        public static List<Guid> sessionId=null;
+
+        public AccountService()
+        {
+           
+            sessionId = new List<Guid>();
+        }
+
+        #region IAccountService 成员
+
+        public Session StartSession(Account anAccount)
+        {
+            
+            if (IsValid(anAccount))
+            {
+                try
+                {
+                    Session sess = new Session(SystemAccountDao.Login(anAccount));
+                    sessionId.Add(sess.Id);
+                    return sess;
+                }
+                catch (HCSMSException ex)
+                {
+                    raiseError(ex);
+                    return null;
+                }               
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        #endregion
+        public bool IsValid(Account anAccount)
+        {
+            try
+            {
+                if (SystemAccountDao.IsExist(anAccount.Name))
+                    return true;
+                else
+                    return false;
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+                return false;
+            }        
+        }
+
+        public bool IsLogin(Session session)
+        {
+            bool isExist = false;
+            try
+            {
+                foreach (Guid id in sessionId)
+                {
+                    if (id.ToString()==session.Id.ToString())
+                    {
+                        isExist= true;
+                    }
+                }
+                return isExist;
+            }
+            catch (HCSMSException ex)
+            {
+                raiseError(ex);
+                return false;
+            }     
+        }
+    }
+}

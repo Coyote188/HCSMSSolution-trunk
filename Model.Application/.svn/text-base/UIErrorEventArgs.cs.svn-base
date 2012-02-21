@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using System.ServiceModel;
+using System.Runtime.Serialization;
+
+namespace HCSMS.Model.Application
+{
+    [DataContract]
+   public class ErrorEventArgs
+    {
+        private string message;
+        private Exception exception;
+
+        public ErrorEventArgs(string msg,Exception ex)
+        {
+            message = msg;
+            exception = ex;
+        }
+
+        [DataMember]
+        public string Message 
+        { 
+            get { return message; } 
+        }
+
+        [DataMember]
+        public Exception Exception
+        {
+            get { return exception; }
+        }
+    }
+}

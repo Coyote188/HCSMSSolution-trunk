@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using System.ServiceModel;
+using System.Runtime.Serialization;
+
+namespace HCSMS.Model.Application
+{
+    [DataContract]
+    public class NotifyEventArgs: EventArgs
+    {
+        private string message;
+
+        public NotifyEventArgs(string msg)
+        {
+            message = msg;
+        }
+
+        [DataMember]
+        public string Message { get { return message; } }
+
+    }
+}

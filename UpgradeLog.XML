@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="HCSMSSolution">
+</Property><Property Name="Solution File" Value="E:\Develop\C#\HCSMSSolution-trunk\HCSMSSolution.sln">
+</Property><Property Name="Date" Value="2010年6月16日">
+</Property><Property Name="Time" Value="14:49">
+</Property></Properties><Event ErrorLevel="0" Project="DataAccess" Source="DataAccess\DataAccess.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="DataAccess" Source="DataAccess\DataAccess.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Model" Source="Model\Model.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Model" Source="Model\Model.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Pesentation" Source="Pesentation\Pesentation.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Pesentation" Source="Pesentation\Pesentation.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Service" Source="Service\Service.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Service" Source="Service\Service.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Presentation.Impl" Source="Presentation.Impl\Presentation.Impl.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Presentation.Impl" Source="Presentation.Impl\Presentation.Impl.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WindowsForms" Source="WindowsForms\WindowsForms.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="WindowsForms" Source="WindowsForms\WindowsForms.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DataAccessTestProject" Source="DataAccessTestProject\DataAccessTestProject.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="DataAccessTestProject" Source="DataAccessTestProject\DataAccessTestProject.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ModelTestProject" Source="ModelTestProject\ModelTestProject.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ModelTestProject" Source="ModelTestProject\ModelTestProject.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Presentation.ImplTestProject" Source="Presentation.ImplTestProject\Presentation.ImplTestProject.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Presentation.ImplTestProject" Source="Presentation.ImplTestProject\Presentation.ImplTestProject.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Service.ImplTestProject" Source="Service.ImplTestProject\Service.ImplTestProject.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Service.ImplTestProject" Source="Service.ImplTestProject\Service.ImplTestProject.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Model.Application" Source="Model.Application\Model.Application.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Model.Application" Source="Model.Application\Model.Application.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ClientConsole" Source="ClientConsole\ClientConsole.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ClientConsole" Source="ClientConsole\ClientConsole.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Service.Impl" Source="Service.Impl\Service.Impl.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Service.Impl" Source="Service.Impl\Service.Impl.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="TestServiceConsole" Source="TestServiceConsole\TestServiceConsole.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="TestServiceConsole" Source="TestServiceConsole\TestServiceConsole.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="HCSMSSolution.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="HCSMSSolution.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DataAccess" Source="DataAccess\DataAccess.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Model" Source="Model\Model.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Pesentation" Source="Pesentation\Pesentation.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Service" Source="Service\Service.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Presentation.Impl" Source="Presentation.Impl\Presentation.Impl.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="WindowsForms" Source="WindowsForms\WindowsForms.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Model.Application" Source="Model.Application\Model.Application.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="ClientConsole" Source="ClientConsole\ClientConsole.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Service.Impl" Source="Service.Impl\Service.Impl.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="TestServiceConsole" Source="TestServiceConsole\TestServiceConsole.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

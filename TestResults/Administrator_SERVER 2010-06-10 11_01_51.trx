@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="20c3387b-0064-4041-a6f8-d68e5d5e91f3" name="Administrator@SERVER 2010-06-10 11:01:51" runUser="SERVER\Administrator" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <TestRunConfiguration name="本地测试运行" id="02a1add5-ee3f-4fb8-94b5-26a6ccdf6785">
+    <Description>这是本地测试运行的默认测试运行配置。</Description>
+    <Deployment runDeploymentRoot="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestResults\Administrator_SERVER 2010-06-10 11_01_51" enabled="false">
+      <DeploymentItem filename="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\DataAccess\bin\Debug\HCSMS.DataAccess.dll" />
+      <DeploymentItem filename="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.Impl\bin\HCSMS.Service.Impl.dll" />
+      <DeploymentItem filename="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Model\bin\Debug\HCSMS.Model.dll" />
+      <DeploymentItem filename="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service\bin\Debug\HCSMS.Service.dll" />
+    </Deployment>
+    <TestTypeSpecific />
+  </TestRunConfiguration>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <Times creation="2010-06-10T11:01:51.5356705+08:00" queuing="2010-06-10T11:01:51.8861745+08:00" start="2010-06-10T11:01:52.1365345+08:00" finish="2010-06-10T11:01:55.0707537+08:00" />
+  <TestDefinitions>
+    <UnitTest name="ChangeItemTest" storage="c:\documents and settings\administrator\my documents\visual studio 2008\projects\hcsmssolution-trunk\service.impltestproject\bin\debug\service.impltestproject.dll" id="7d804b6b-2072-e7b0-ce01-126b24382ec5">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="ad737701-4e82-4a65-9083-79945989d3a6" />
+      <TestMethod codeBase="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.ImplTestProject\bin\Debug\Service.ImplTestProject.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Service.ImplTestProject.DinningServiceTest, Service.ImplTestProject" name="ChangeItemTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="列表中未列出的结果" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="所有已加载的结果" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="7d804b6b-2072-e7b0-ce01-126b24382ec5" executionId="ad737701-4e82-4a65-9083-79945989d3a6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="ad737701-4e82-4a65-9083-79945989d3a6" testId="7d804b6b-2072-e7b0-ce01-126b24382ec5" testName="ChangeItemTest" computerName="SERVER" duration="00:00:00.8201813" startTime="2010-06-10T11:01:52.2567073+08:00" endTime="2010-06-10T11:01:53.3182337+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method Service.ImplTestProject.DinningServiceTest.ChangeItemTest threw exception:  System.ServiceModel.FaultException`1[HCSMS.Model.Application.HCSMSException]: The creator of this fault did not specify a Reason..</Message>
+          <StackTrace>    at HCSMS.Service.Impl.DinningService.ChangeItem(String tableNumber, Dictionary`2 itemPair) in C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.Impl\DinningService.svc.cs:line 68
+   at Service.ImplTestProject.DinningServiceTest.ChangeItemTest() in C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Service.ImplTestProject\DinningServiceTest.cs:line 85
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

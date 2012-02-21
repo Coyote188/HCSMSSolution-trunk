@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="1bc7ca32-346b-41dc-905a-c55f18ce8517" name="Administrator@SERVER 2010-06-10 10:29:25" runUser="SERVER\Administrator" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <TestRunConfiguration name="本地测试运行" id="02a1add5-ee3f-4fb8-94b5-26a6ccdf6785">
+    <Description>这是本地测试运行的默认测试运行配置。</Description>
+    <Deployment runDeploymentRoot="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestResults\Administrator_SERVER 2010-06-10 10_29_25" enabled="false">
+      <DeploymentItem filename="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Model\bin\Debug\HCSMS.Model.dll" />
+      <DeploymentItem filename="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Model.Application\bin\Debug\HCSMS.Model.Application.dll" />
+      <DeploymentItem filename="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Pesentation\bin\Debug\HCSMS.Presentation.dll" />
+      <DeploymentItem filename="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.Impl\bin\Debug\HCSMS.Presentation.Impl.dll" />
+    </Deployment>
+    <TestTypeSpecific />
+  </TestRunConfiguration>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <Times creation="2010-06-10T10:29:25.6275921+08:00" queuing="2010-06-10T10:29:29.5532369+08:00" start="2010-06-10T10:29:30.3143313+08:00" finish="2010-06-10T10:29:32.3572689+08:00" />
+  <TestDefinitions>
+    <UnitTest name="ChangeItemUITest" storage="c:\documents and settings\administrator\my documents\visual studio 2008\projects\hcsmssolution-trunk\presentation.impltestproject\bin\debug\presentation.impltestproject.dll" id="d7a11f5a-bccb-e788-f95e-ef74cd832f94">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="a6867da1-0427-4b9e-ad74-0288484e3ea4" />
+      <TestMethod codeBase="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\bin\Debug\Presentation.ImplTestProject.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Presentation.ImplTestProject.TableUITest, Presentation.ImplTestProject" name="ChangeItemUITest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="列表中未列出的结果" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="所有已加载的结果" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="d7a11f5a-bccb-e788-f95e-ef74cd832f94" executionId="a6867da1-0427-4b9e-ad74-0288484e3ea4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="a6867da1-0427-4b9e-ad74-0288484e3ea4" testId="d7a11f5a-bccb-e788-f95e-ef74cd832f94" testName="ChangeItemUITest" computerName="SERVER" duration="00:00:01.0330005" startTime="2010-06-10T10:29:30.4945905+08:00" endTime="2010-06-10T10:29:32.0067649+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method Presentation.ImplTestProject.TableUITest.ChangeItemUITest threw exception:  System.InvalidOperationException: Could not find default endpoint element that references contract 'DinningService.IDinningItemService' in the ServiceModel client configuration section. This might be because no configuration file was found for your application, or because no endpoint element matching this contract could be found in the client element..</Message>
+          <StackTrace>    at System.ServiceModel.Description.ConfigLoader.LoadChannelBehaviors(ServiceEndpoint serviceEndpoint, String configurationName)
+   at System.ServiceModel.ChannelFactory.ApplyConfiguration(String configurationName)
+   at System.ServiceModel.ChannelFactory.InitializeEndpoint(String configurationName, EndpointAddress address)
+   at System.ServiceModel.ChannelFactory`1..ctor(String endpointConfigurationName, EndpointAddress remoteAddress)
+   at System.ServiceModel.EndpointTrait`1.CreateSimplexFactory()
+   at System.ServiceModel.ClientBase`1.CreateChannelFactoryRef(EndpointTrait`1 endpointTrait)
+   at System.ServiceModel.ClientBase`1.InitializeChannelFactoryRef()
+   at System.ServiceModel.ClientBase`1..ctor()
+   at HCSMS.Presentation.Impl.DinningService.DinningItemServiceClient..ctor() in C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.Impl\Service References\DinningService\Reference.cs:line 30
+   at HCSMS.Presentation.Impl.TableUI.ChangeItem(Dictionary`2 anItemPair) in C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.Impl\TableUI.cs:line 17
+   at Presentation.ImplTestProject.TableUITest.ChangeItemUITest() in C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\TableUITest.cs:line 82
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

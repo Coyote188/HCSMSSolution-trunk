@@ -1,0 +1,14 @@
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestServiceConsole\bin\Debug\TestServiceConsole.exe.config
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestServiceConsole\bin\Debug\TestServiceConsole.exe
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestServiceConsole\bin\Debug\TestServiceConsole.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestServiceConsole\bin\Debug\HCSMS.Model.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestServiceConsole\bin\Debug\HCSMS.Presentation.Impl.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestServiceConsole\bin\Debug\HCSMS.Presentation.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestServiceConsole\bin\Debug\HCSMS.Model.Application.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestServiceConsole\bin\Debug\HCSMS.Presentation.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestServiceConsole\bin\Debug\HCSMS.Model.Application.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestServiceConsole\bin\Debug\HCSMS.Presentation.Impl.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestServiceConsole\bin\Debug\HCSMS.Model.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestServiceConsole\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestServiceConsole\obj\Debug\TestServiceConsole.exe
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestServiceConsole\obj\Debug\TestServiceConsole.pdb

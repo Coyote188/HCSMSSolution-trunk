@@ -1,0 +1,137 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using HCSMS.Model;
+using HCSMS.Model.Application;
+using System.ServiceModel;
+
+namespace HCSMS.Presentation.Impl
+{
+    public class LoginUI: UserInterface,ILoginUI
+    {      
+    
+        private Account account = new Account();    
+
+
+        public event NotifyEvent LoginFail;
+        public event NotifyEvent LoginSuccess;
+        public event NotifyEvent LoginNotValid;
+
+        public Session Session { get { return session; } }
+
+        public Account Account { get { return account; } set { account = value; } }
+
+        public LoginUI(Account acc)
+        {
+            this.Account = acc;
+        }
+
+        public void Login(string userName, string password)
+        {
+            account.Name = userName;
+            account.Password = password;
+
+            Login();
+
+        }
+        public void Login()
+        {
+                if (validate())
+                {
+                    
+        
+                    using (AccountService.AccountServiceClient proxy = new AccountService.AccountServiceClient())
+                    {
+                        try
+                        {
+                            proxy.Open();
+                            session = proxy.StartSession(account);
+                            if (session != null)
+                            {
+                                NotifyEventHandler(LoginSuccess, new NotifyEventArgs("success"));
+                            }
+                            else
+                            {
+                                NotifyEventHandler(LoginFail, new NotifyEventArgs("fail"));
+                            }
+                           
+                        }
+                        catch (FaultException<HCSMSException> ex)
+                        {
+                            raiseError(ex);
+                            NotifyEventHandler(LoginFail, new NotifyEventArgs(ex.Message));
+                        }
+                        catch (Exception ex)
+                        {
+                            raiseError(ex);
+                            NotifyEventHandler(LoginFail, new NotifyEventArgs(ex.Message));
+                        }
+                        finally
+                        {
+                            proxy.Close();
+                        }
+                    }
+           
+                }
+
+                else
+                {
+                    NotifyEventHandler(LoginFail, new NotifyEventArgs("fail"));
+                }
+           
+        }
+
+        public bool IsValid()
+        {
+            if (!validate())
+            {
+                NotifyEventHandler(LoginNotValid, new NotifyEventArgs("not valid"));
+                return false;
+            }
+            else
+                return true;
+        }
+        private bool validate()
+        {
+            if (account.Name == string.Empty || account.Password == string.Empty)
+            {
+                return false;
+            }
+            else
+            {
+
+                return true;
+            }
+        }
+
+        public bool IsLogin()
+        {
+            using ( AccountService.AccountServiceClient proxy = new AccountService.AccountServiceClient())
+            {
+                try
+                {
+                    proxy.Open();
+                    return proxy.IsLogin(session);
+                    
+                }
+                catch (FaultException<HCSMSException> ex)
+                {
+                    raiseError(ex);
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    raiseError(ex);
+                    return false;
+                }
+                finally
+                {
+                    proxy.Close();
+                }
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,204 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using HCSMS.Model;
+using HCSMS.Model.Application;
+using System.ServiceModel;
+
+namespace HCSMS.Presentation.Impl
+{
+    public abstract class UserInterface
+    {
+        private Stack<Exception> exception;
+        private Stack<NotifyEventArgs> reply;
+        private List<string> replyMessage;
+
+        public bool IsUsingErrorContainer { get; set; }
+        public bool IsUsingReplyContainer{get;set;}
+        protected Session session;
+
+        public UserInterface(Session session)
+        {
+            exception = new Stack<Exception>();
+            reply = new Stack<NotifyEventArgs>();
+            replyMessage = new List<string>();
+
+            IsUsingErrorContainer = true;
+            IsUsingReplyContainer = false;
+
+            this.ErrorHandler += HCSMSLog.OnErrorLog;
+            this.session = session;
+            if (!IsAuthorize(this.session))
+            {
+                throw new Exception("请登陆!");
+            }
+        }
+        public UserInterface()
+        {
+            exception = new Stack<Exception>();
+            reply = new Stack<NotifyEventArgs>();
+            replyMessage = new List<string>();
+
+            IsUsingErrorContainer = true;
+            IsUsingReplyContainer = false;
+
+            this.ErrorHandler += HCSMSLog.OnErrorLog;
+           
+        }
+
+        //check for user authentication
+        private bool IsAuthorize(Session session)
+        {
+            using (AccountService.AccountServiceClient proxy = new AccountService.AccountServiceClient())
+            {
+                try
+                {
+                    proxy.Open();
+                    return proxy.IsLogin(session);
+
+                }
+                catch (FaultException<HCSMSException> ex)
+                {
+                    raiseError(ex);
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    raiseError(ex);
+                    return false;
+                }
+                finally
+                {
+                    proxy.Close();
+                }
+            }
+        }
+
+
+#region Definition of Events for use of all class in Presentation Layer
+
+        public delegate void NotifyEvent(object sender, NotifyEventArgs args);
+        public delegate void HandleEvent(object sender, HandleEventArgs args);
+        public delegate void ErrorEvent(object sender, ErrorEventArgs args);
+
+        // Event to fire when there is an error happens
+        public event ErrorEvent ErrorHandler;
+        // Event to fire when there is a reply for server happens
+        public event NotifyEvent ServerReplyHandler;
+
+#endregion
+
+ # region Error management block
+
+        public List<Exception> ErrorContainer { get { return exception.ToList(); } } 
+        protected virtual void raiseError(Exception ex)
+        {
+            ErrorEventArgs args = new ErrorEventArgs("Application Errors!", ex);
+            if (IsUsingErrorContainer)
+            {
+                exception.Push(ex);
+            }
+            ErrorEventHandler(ErrorHandler, args);
+        }
+        public Exception HandleException()
+        {
+            if (IsUsingErrorContainer)
+            {
+                try
+                {
+                    return exception.Pop();
+                }
+                catch (ArgumentNullException ex)
+                {
+                    raiseError(ex);
+                    return null;
+                }
+            }
+            else return null;
+        }
+        public void ClearException()
+        {
+            exception.Clear();
+        }
+
+# endregion
+
+#region Server reply management block
+
+        public List<String> ReplyContainer
+        { 
+            get 
+            {
+                return getMessages();
+            }
+        }
+        private List<string> getMessages()
+        {
+            replyMessage.Clear( );
+            foreach (NotifyEventArgs args in reply)
+            {
+                replyMessage.Add(args.Message);
+            }
+            return replyMessage;
+        }
+        protected virtual void serverReply(NotifyEventArgs args)
+        {
+            if (IsUsingReplyContainer)
+            {
+                reply.Push(args);
+            }
+            NotifyEventHandler(ServerReplyHandler, args);
+        }
+        public string HandleServerMessage()
+        {
+            if (IsUsingReplyContainer)
+            {
+                try
+                {
+                    return ((NotifyEventArgs)reply.Pop()).Message;
+                }
+                catch (ArgumentNullException ex)
+                {
+                    raiseError(ex);
+                    return string.Empty;
+                }
+            }
+            else return string.Empty;
+        }
+        public void ClearServerMessage()
+        {
+            reply.Clear();
+        }
+#endregion
+
+#region    Generic Method for handling event
+
+        protected virtual void NotifyEventHandler(NotifyEvent handler, NotifyEventArgs args)
+        {
+            if (handler != null)
+            {
+                handler(this, args);               
+            }
+        }
+        protected virtual void HandleEventHandler(HandleEvent handler, HandleEventArgs args)
+        {
+            if (handler != null)
+            {
+                handler(this, args);
+            }
+        }
+        protected virtual void ErrorEventHandler(ErrorEvent handler, ErrorEventArgs args)
+        {
+            if (handler != null)
+            {
+                handler(this, args);
+                HandleException();
+            }
+        }
+
+#endregion
+
+    }
+}

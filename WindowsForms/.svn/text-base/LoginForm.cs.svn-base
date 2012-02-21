@@ -1,0 +1,84 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+using HCSMS.Model;
+using HCSMS.Model.Application;
+using HCSMS.Presentation.Impl;
+
+namespace HCSMS.Presentation.WindowsForms
+{
+    public partial class LoginForm : Form
+    {
+        private LoginUI aUI;
+        private Account account;
+
+        public LoginForm()
+        {
+            InitializeComponent();
+           
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            account = new Account();
+            aUI = new LoginUI(account);
+            aUI.LoginFail += OnLoginFail;
+            aUI.LoginSuccess += OnLoginSuccess;
+            aUI.LoginNotValid += OnLoginNotValid;
+            aUI.ErrorHandler += OnError;
+        }
+        private void Login()
+        {
+            account.Name = txtUserName.Text.Trim();
+            account.Password = txtUserPwd.Text.Trim();
+
+
+            if (aUI.IsValid())
+            {
+                aUI.Login();
+            }
+
+        }
+
+        private void OnLoginSuccess(object sender, NotifyEventArgs ev)
+        {
+            string time = DateTime.Now.ToString();
+
+            MessageBox.Show("用户登陆成功 : " + time, "提示");
+        }
+
+        private void OnError(object sender, ErrorEventArgs ev)
+        {           
+
+            MessageBox.Show("程序发生错误 : " +ev.Exception.Message, "提示");
+        }
+
+        private void OnLoginFail(object sender, NotifyEventArgs ev)
+        {
+            txtUserName.Text = "";
+            txtUserPwd.Text = "";
+            MessageBox.Show("用户名或密码错误！", "提示");
+        }
+
+        private void OnLoginNotValid(object sender, NotifyEventArgs ev)
+        {
+            MessageBox.Show("用户名或密码不能为空", "提示");
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            Login();
+        }
+    }
+}

@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CA191B64-3F55-4161-B09C-5EBFB051DFE4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HCSMS.Presentation.Impl</RootNamespace>
+    <AssemblyName>HCSMS.Presentation.Impl</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BillingUI.cs" />
+    <Compile Include="ItemUI.cs" />
+    <Compile Include="LoginUI.cs" />
+    <Compile Include="MemberUI.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReservationUI.cs" />
+    <Compile Include="Service References\AccountService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DinningService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\KitchenService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ReservationService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="StockUI.cs" />
+    <Compile Include="TableUI.cs" />
+    <Compile Include="UserInterface.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model.Application\Model.Application.csproj">
+      <Project>{3D316920-C76E-4DAC-8181-1F23076D1191}</Project>
+      <Name>Model.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{83DC213F-7411-44BA-829C-95078F8BFA4C}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pesentation\Pesentation.csproj">
+      <Project>{AF20CF8E-E949-46A6-8C3A-D3CFB03A509E}</Project>
+      <Name>Pesentation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AccountService\" />
+    <WCFMetadataStorage Include="Service References\DinningService\" />
+    <WCFMetadataStorage Include="Service References\KitchenService\" />
+    <WCFMetadataStorage Include="Service References\ReservationService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DinningService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DinningService\DinningService1.wsdl" />
+    <None Include="Service References\DinningService\DinningService4.xsd" />
+    <None Include="Service References\DinningService\DinningService41.xsd" />
+    <None Include="Service References\DinningService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\HCSMS.Model.Item.datasource" />
+    <None Include="Properties\DataSources\HCSMS.Model.SpecialOffer.datasource" />
+    <None Include="Properties\DataSources\HCSMS.Model.Table.datasource" />
+    <None Include="Service References\DinningService\DinningService1.disco" />
+    <None Include="Service References\DinningService\DinningService42.xsd" />
+    <None Include="Service References\DinningService\DinningService43.xsd" />
+    <None Include="Service References\ReservationService\ReservationService.wsdl" />
+    <None Include="Service References\ReservationService\ReservationService.xsd" />
+    <None Include="Service References\ReservationService\ReservationService1.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReservationService\ReservationService.disco" />
+    <None Include="Service References\ReservationService\ReservationService2.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReservationService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\HCSMS.Model.PreorderTable.datasource" />
+    <None Include="Properties\DataSources\HCSMS.Model.SaleItem.datasource" />
+    <None Include="Service References\KitchenService\KitchenService.wsdl" />
+    <None Include="Service References\KitchenService\KitchenService.xsd" />
+    <None Include="Service References\KitchenService\KitchenService1.xsd" />
+    <None Include="Service References\KitchenService\KitchenService2.xsd" />
+    <None Include="Service References\ReservationService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\KitchenService\KitchenService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\KitchenService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountService\AccountService.wsdl" />
+    <None Include="Service References\AccountService\AccountService.xsd" />
+    <None Include="Service References\AccountService\AccountService1.xsd" />
+    <None Include="Service References\AccountService\AccountService2.xsd" />
+    <None Include="Service References\KitchenService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountService\AccountService.disco" />
+    <None Include="Service References\AccountService\AccountService3.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\HCSMS.Model.Session.datasource" />
+    <None Include="Service References\AccountService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

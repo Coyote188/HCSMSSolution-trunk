@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="df505575-709d-44d6-bbbe-92f22d99376e" name="Administrator@SERVER 2010-06-10 11:48:19" runUser="SERVER\Administrator" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <TestRunConfiguration name="本地测试运行" id="02a1add5-ee3f-4fb8-94b5-26a6ccdf6785">
+    <Description>这是本地测试运行的默认测试运行配置。</Description>
+    <Deployment runDeploymentRoot="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestResults\Administrator_SERVER 2010-06-10 11_48_19" enabled="false">
+      <DeploymentItem filename="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Model\bin\Debug\HCSMS.Model.dll" />
+      <DeploymentItem filename="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Model.Application\bin\Debug\HCSMS.Model.Application.dll" />
+      <DeploymentItem filename="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Pesentation\bin\Debug\HCSMS.Presentation.dll" />
+      <DeploymentItem filename="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.Impl\bin\Debug\HCSMS.Presentation.Impl.dll" />
+    </Deployment>
+    <TestTypeSpecific />
+  </TestRunConfiguration>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <Times creation="2010-06-10T11:48:19.0439105+08:00" queuing="2010-06-10T11:48:19.1240257+08:00" start="2010-06-10T11:48:19.2241697+08:00" finish="2010-06-10T11:48:20.0553649+08:00" />
+  <TestDefinitions>
+    <UnitTest name="ChangeItemUITest" storage="c:\documents and settings\administrator\my documents\visual studio 2008\projects\hcsmssolution-trunk\presentation.impltestproject\bin\debug\presentation.impltestproject.dll" id="d7a11f5a-bccb-e788-f95e-ef74cd832f94">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="30b0f0cf-8443-4451-9912-724262415ccb" />
+      <TestMethod codeBase="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\bin\Debug\Presentation.ImplTestProject.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Presentation.ImplTestProject.TableUITest, Presentation.ImplTestProject" name="ChangeItemUITest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="列表中未列出的结果" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="所有已加载的结果" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="d7a11f5a-bccb-e788-f95e-ef74cd832f94" executionId="30b0f0cf-8443-4451-9912-724262415ccb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="30b0f0cf-8443-4451-9912-724262415ccb" testId="d7a11f5a-bccb-e788-f95e-ef74cd832f94" testName="ChangeItemUITest" computerName="SERVER" duration="00:00:00.2874999" startTime="2010-06-10T11:48:19.3443425+08:00" endTime="2010-06-10T11:48:19.8350481+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method Presentation.ImplTestProject.TableUITest.ChangeItemUITest threw exception:  System.ServiceModel.AddressAlreadyInUseException: HTTP could not register URL http://+:80/Temporary_Listen_Addresses/b8071c6b-3d9e-40db-befd-e7542255cd8b/ because TCP port 80 is being used by another application. ---&gt;  System.Net.HttpListenerException: The process cannot access the file because it is being used by another process.</Message>
+          <StackTrace>    at System.Net.HttpListener.AddAll()
+   at System.Net.HttpListener.Start()
+   at System.ServiceModel.Channels.SharedHttpTransportManager.OnOpen()
+ --- End of inner exception stack trace ---
+    at System.ServiceModel.Channels.SharedHttpTransportManager.OnOpen()
+   at System.ServiceModel.Channels.TransportManager.Open(TransportChannelListener channelListener)
+   at System.ServiceModel.Channels.TransportManagerContainer.Open(SelectTransportManagersCallback selectTransportManagerCallback)
+   at System.ServiceModel.Channels.TransportChannelListener.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelListener.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.DatagramChannelDemuxer`2.OnOuterListenerOpen(ChannelDemuxerFilter filter, IChannelListener listener, TimeSpan timeout)
+   at System.ServiceModel.Channels.SingletonChannelListener`3.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.LayeredChannelListener`1.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.DatagramChannelDemuxer`2.OnOuterListenerOpen(ChannelDemuxerFilter filter, IChannelListener listener, TimeSpan timeout)
+   at System.ServiceModel.Channels.SingletonChannelListener`3.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.InternalDuplexChannelFactory.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.LayeredChannelFactory`1.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.SecurityChannelFactory`1.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.ReliableChannelFactory`2.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelFactory.TypedServiceChannelFactory`1.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.ChannelFactory.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.ClientBase`1.Open()
+   at HCSMS.Presentation.Impl.TableUI.ChangeItem(Dictionary`2 anItemPair) in C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.Impl\TableUI.cs:line 26
+   at Presentation.ImplTestProject.TableUITest.ChangeItemUITest() in C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\TableUITest.cs:line 82
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

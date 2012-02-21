@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+using HCSMS.Presentation;
+using HCSMS.Presentation.Impl;
+using HCSMS.Model;
+using HCSMS.Model.Application;
+
+
+namespace HCSMS.Presentation.WindowsForms
+{
+    public partial class ChangeItemForm : Form
+    {
+        public ChangeItemForm()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //ITableUI ui = new TableUI();
+
+            //Dictionary<Item, Item> anItemPair = new Dictionary<Item, Item>(); // TODO: 初始化为适当的值
+            //Item old = new Item();
+            //old.Id = "002";
+            //Item ne = new Item();
+            //ne.Id = "003";
+
+            //ui.ChangeItem(anItemPair);
+        }
+    }
+}

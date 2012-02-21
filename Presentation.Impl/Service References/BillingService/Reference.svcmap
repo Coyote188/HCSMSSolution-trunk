@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d8786a7d-568f-4ac3-a3a1-6972f6550b09" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:80/Service/BillingService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BillingService.xsd" MetadataType="Schema" ID="1bf05eb4-c90d-4619-a981-301155b81aa8" SourceId="1" SourceUrl="http://localhost/Service/BillingService.svc?xsd=xsd1" />
+    <MetadataFile FileName="BillingService1.xsd" MetadataType="Schema" ID="c1b6049e-ce02-4ee3-ab5b-1d5219580f51" SourceId="1" SourceUrl="http://localhost/Service/BillingService.svc?xsd=xsd2" />
+    <MetadataFile FileName="BillingService.disco" MetadataType="Disco" ID="ef67b656-4e78-407e-a18f-2154d8155935" SourceId="1" SourceUrl="http://localhost/Service/BillingService.svc?disco" />
+    <MetadataFile FileName="BillingService.wsdl" MetadataType="Wsdl" ID="fdfee914-2fa1-479b-b650-881a45200998" SourceId="1" SourceUrl="http://localhost/Service/BillingService.svc?wsdl" />
+    <MetadataFile FileName="BillingService2.xsd" MetadataType="Schema" ID="9530c120-1947-4ef5-8788-eb156b52c990" SourceId="1" SourceUrl="http://localhost/Service/BillingService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

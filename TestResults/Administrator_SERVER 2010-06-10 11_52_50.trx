@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="32f5b5f5-86e9-439e-85e7-3c05c7633cac" name="Administrator@SERVER 2010-06-10 11:52:50" runUser="SERVER\Administrator" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <TestRunConfiguration name="本地测试运行" id="02a1add5-ee3f-4fb8-94b5-26a6ccdf6785">
+    <Description>这是本地测试运行的默认测试运行配置。</Description>
+    <Deployment runDeploymentRoot="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\TestResults\Administrator_SERVER 2010-06-10 11_52_50" enabled="false">
+      <DeploymentItem filename="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Model\bin\Debug\HCSMS.Model.dll" />
+      <DeploymentItem filename="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Model.Application\bin\Debug\HCSMS.Model.Application.dll" />
+      <DeploymentItem filename="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Pesentation\bin\Debug\HCSMS.Presentation.dll" />
+      <DeploymentItem filename="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.Impl\bin\Debug\HCSMS.Presentation.Impl.dll" />
+    </Deployment>
+    <TestTypeSpecific />
+  </TestRunConfiguration>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <Times creation="2010-06-10T11:52:50.5443089+08:00" queuing="2010-06-10T11:52:50.6544673+08:00" start="2010-06-10T11:52:51.0250001+08:00" finish="2010-06-10T11:52:56.9935825+08:00" />
+  <TestDefinitions>
+    <UnitTest name="ChangeItemUITest" storage="c:\documents and settings\administrator\my documents\visual studio 2008\projects\hcsmssolution-trunk\presentation.impltestproject\bin\debug\presentation.impltestproject.dll" id="d7a11f5a-bccb-e788-f95e-ef74cd832f94">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="ffceedad-a055-47e8-8e9f-5e83f540dfc0" />
+      <TestMethod codeBase="C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\bin\Debug\Presentation.ImplTestProject.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Presentation.ImplTestProject.TableUITest, Presentation.ImplTestProject" name="ChangeItemUITest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="列表中未列出的结果" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="所有已加载的结果" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="d7a11f5a-bccb-e788-f95e-ef74cd832f94" executionId="ffceedad-a055-47e8-8e9f-5e83f540dfc0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="ffceedad-a055-47e8-8e9f-5e83f540dfc0" testId="d7a11f5a-bccb-e788-f95e-ef74cd832f94" testName="ChangeItemUITest" computerName="SERVER" duration="00:00:05.2115369" startTime="2010-06-10T11:52:51.2052593+08:00" endTime="2010-06-10T11:52:56.7932945+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method Presentation.ImplTestProject.TableUITest.ChangeItemUITest threw exception:  System.ServiceModel.FaultException: The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the &lt;serviceDebug&gt; configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework 3.0 SDK documentation and inspect the server trace logs..</Message>
+          <StackTrace> 
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc&amp; rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData&amp; msgData, Int32 type)
+   at HCSMS.Presentation.Impl.DinningService.IDinningService.ChangeItem(String tableNumber, Dictionary`2 itemPair)
+   at HCSMS.Presentation.Impl.DinningService.DinningServiceClient.ChangeItem(String tableNumber, Dictionary`2 itemPair) in c:\documents and settings\administrator\my documents\visual studio 2008\projects\hcsmssolution-trunk\presentation.impl\service references\dinningservice\reference.cs:line 50
+   at HCSMS.Presentation.Impl.TableUI.ChangeItem(Dictionary`2 anItemPair) in C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.Impl\TableUI.cs:line 28
+   at Presentation.ImplTestProject.TableUITest.ChangeItemUITest() in C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\Presentation.ImplTestProject\TableUITest.cs:line 82
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

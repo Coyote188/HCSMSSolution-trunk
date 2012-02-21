@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cab01ddd-a85c-46de-8f32-c5138e1c2afc" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:80/Service/DinningService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DinningService.xsd" MetadataType="Schema" ID="00038569-53a9-4e2e-91fa-eb65fa3d074c" SourceId="1" SourceUrl="http://localhost/Service/DinningService.svc?xsd=xsd2" />
+    <MetadataFile FileName="DinningService1.xsd" MetadataType="Schema" ID="3d5fcdbd-6be9-4b77-971c-a38e2a662b8e" SourceId="1" SourceUrl="http://localhost/Service/DinningService.svc?xsd=xsd1" />
+    <MetadataFile FileName="DinningService.wsdl" MetadataType="Wsdl" ID="13983fc8-f8fa-4663-96ef-fa8a44a5652d" SourceId="1" SourceUrl="http://localhost/Service/DinningService.svc?wsdl" />
+    <MetadataFile FileName="DinningService2.xsd" MetadataType="Schema" ID="953b5947-a57c-4f8e-b071-afca2ca3abf0" SourceId="1" SourceUrl="http://localhost/Service/DinningService.svc?xsd=xsd3" />
+    <MetadataFile FileName="DinningService.disco" MetadataType="Disco" ID="bd731280-486a-4733-9596-2af871457761" SourceId="1" SourceUrl="http://localhost/Service/DinningService.svc?disco" />
+    <MetadataFile FileName="DinningService3.xsd" MetadataType="Schema" ID="7c15ef42-65ce-4b7a-b600-f14af420d713" SourceId="1" SourceUrl="http://localhost/Service/DinningService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

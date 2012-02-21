@@ -1,0 +1,33 @@
+﻿using System;
+using System.Diagnostics;
+
+namespace HCSMS.Model.Application
+{
+    public static class HCSMSLog
+    {
+        public static void OnErrorLog(object sender, ErrorEventArgs args)
+        {
+            if (!EventLog.SourceExists("HCSMS Application"))
+            {
+                EventLog.CreateEventSource("HCSMS Application", "Application");                
+            }
+            EventLog.WriteEntry("HCSMS Application",sender.ToString()+" : "+args.Message+"\n"+ args.Exception.Message, EventLogEntryType.Error);
+        }
+        public static void OnWarningLog(object sender, NotifyEventArgs args)
+        {
+            if (!EventLog.SourceExists("HCSMS Application"))
+            {
+                EventLog.CreateEventSource("HCSMS Application", "Application");
+            }
+            EventLog.WriteEntry("HCSMS Application", sender.ToString() + " : " + args.Message, EventLogEntryType.Warning);
+        }
+        public static void OnHandleEventLog(object sender, HandleEventArgs args)
+        {
+            if (!EventLog.SourceExists("HCSMS Application"))
+            {
+                EventLog.CreateEventSource("HCSMS Application", "Application");
+            }
+            EventLog.WriteEntry("HCSMS Application", sender.ToString() + " : " + args.Message, EventLogEntryType.Information);
+        }
+    }
+}

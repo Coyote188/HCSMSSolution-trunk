@@ -1,0 +1,19 @@
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\ClientConsole\bin\Debug\ClientConsole.exe.config
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\ClientConsole\bin\Debug\ClientConsole.exe
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\ClientConsole\bin\Debug\ClientConsole.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\ClientConsole\bin\Debug\HCSMS.Model.Application.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\ClientConsole\bin\Debug\HCSMS.Model.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\ClientConsole\bin\Debug\HCSMS.Presentation.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\ClientConsole\bin\Debug\HCSMS.Presentation.Impl.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\ClientConsole\bin\Debug\HCSMS.Service.dll
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\ClientConsole\bin\Debug\HCSMS.Presentation.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\ClientConsole\bin\Debug\HCSMS.Model.Application.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\ClientConsole\bin\Debug\HCSMS.Service.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\ClientConsole\bin\Debug\HCSMS.Presentation.Impl.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\ClientConsole\bin\Debug\HCSMS.Model.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\ClientConsole\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\ClientConsole\obj\Debug\ClientConsole.exe
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\HCSMSSolution-trunk\ClientConsole\obj\Debug\ClientConsole.pdb
+E:\Develop\C#\HCSMSSolution-trunk\ClientConsole\bin\Debug\ClientConsole.exe.config
+E:\Develop\C#\HCSMSSolution-trunk\ClientConsole\obj\Debug\ClientConsole.exe
+E:\Develop\C#\HCSMSSolution-trunk\ClientConsole\obj\Debug\ClientConsole.pdb
